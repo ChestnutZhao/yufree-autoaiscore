@@ -17,6 +17,10 @@ Change Line 9 of `update.py` to your own rss.
 
 Change Line 21 to fit your research interests.
 
+- Change issue repo
+
+Fill your GitHub user name in Line 103.
+
 - Trigger the first update
 
 Click your repo's Actions, select Weekly Article, and click run workflow in the right panel.
