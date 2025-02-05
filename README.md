@@ -3,7 +3,7 @@ This is a repo template to generate score for PubMed RSS update based on researc
 
 # Usage
 
-- Fork and clone this repo to your own account
+- Fork and clone this repo to your own account or click `use this template - Create a new Repository`
 
 - Set up AI API
 
