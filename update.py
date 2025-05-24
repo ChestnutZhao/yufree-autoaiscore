@@ -25,7 +25,7 @@ def extract_scores(text):
                                         "Research Score: <score>\n"
                                         "Social Impact Score: <score>"}
         ],
-        max_tokens=100,
+        max_tokens=4000,
         temperature=0.5
     )
 
