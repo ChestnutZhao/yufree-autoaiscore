@@ -23,7 +23,7 @@ def extract_scores(text):
                                         "2. Social Impact Score (0-100): Based on public attention, policy relevance, and societal impact.\n"
                                         "Provide the scores in the following format:\n"
                                         "Research Score: <score>\n"
-                                        "Social Impact Score: <score>"\n
+                                        "Social Impact Score: <score>\n"
                                         "Do not show the thinking process."}
         ],
         max_tokens=100,
