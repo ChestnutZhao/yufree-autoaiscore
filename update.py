@@ -6,19 +6,18 @@ import os
 import openai
 
 # Example PubMed RSS feed URL
-rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1rUyv9-0xUixl8iP0hZRiJDvvzoO2ncrWKy4nWspV6YYVdU1FG/?limit=15&utm_campaign=pubmed-2&fc=20250205104849'
-
+rss_url = 'https://pubs.acs.org/action/showFeed?type=axatoc&feed=rss&jc=jacsat'
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
-client = openai.OpenAI(api_key=openaiapikey) # if you use deepseek api key, change to: client = openai.OpenAI(api_key=openaiapikey, base_url="https://api.deepseek.com")
+client = openai.OpenAI(api_key=openaiapikey, base_url="https://api.suanli.cn/v1") # if you use deepseek api key, change to: client = openai.OpenAI(api_key=openaiapikey, base_url="https://api.deepseek.com")
 
 def extract_scores(text):
     # Use OpenAI API to get Research Score and Social Impact Score separately. Change model to deepseek-chat for deepseek-v3
     response = client.chat.completions.create(
-        model="gpt-4o-mini", 
+        model="free:QwQ-32B", 
         messages=[
-            {"role": "system", "content": "You are an mass spectrometry expert and researcher. You are skilled at selecting interesting/novelty research."},
+            {"role": "system", "content": "你是一个有经验的有机化学科研助理。你擅长总结有机化学文献的内容并将其打分。"},
             {"role": "user", "content": f"Given the text '{text}', evaluate this article with two scores:\n"
                                         "1. Research Score (0-100): Based on research innovation, methodological rigor, and data reliability.\n"
                                         "2. Social Impact Score (0-100): Based on public attention, policy relevance, and societal impact.\n"
