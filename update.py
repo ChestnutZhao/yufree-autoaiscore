@@ -6,7 +6,7 @@ import os
 import openai
 
 # Example PubMed RSS feed URL
-rss_url = 'https://pubs.acs.org/action/showFeed?type=axatoc&feed=rss&jc=jacsat'
+rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1rUyv9-0xUixl8iP0hZRiJDvvzoO2ncrWKy4nWspV6YYVdU1FG/?limit=15&utm_campaign=pubmed-2&fc=20250205104849'
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
@@ -17,7 +17,7 @@ def extract_scores(text):
     response = client.chat.completions.create(
         model="free:QwQ-32B", 
         messages=[
-            {"role": "system", "content": "你是一个有经验的有机化学科研助理。你擅长总结有机化学文献的内容并将其打分。"},
+            {"role": "system", "content": "You are an mass spectrometry expert and researcher. You are skilled at selecting interesting/novelty research."},
             {"role": "user", "content": f"Given the text '{text}', evaluate this article with two scores:\n"
                                         "1. Research Score (0-100): Based on research innovation, methodological rigor, and data reliability.\n"
                                         "2. Social Impact Score (0-100): Based on public attention, policy relevance, and societal impact.\n"
