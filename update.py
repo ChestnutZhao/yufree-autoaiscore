@@ -89,7 +89,6 @@ issue_body = "Below are the article matching results from the past week:\n\n"
 
 for article_data in new_articles_data:
     abstract = article_data["title"]
-    generated_text = article_data["generated_text"]
     research_score = article_data["research_score"]
     social_impact_score = article_data["social_impact_score"]
     doi = article_data.get("doi", "No DOI available")  # Default to "No DOI available" if DOI field is missing
@@ -97,7 +96,6 @@ for article_data in new_articles_data:
     issue_body += f"- **Title**: {abstract}\n"
     issue_body += f"  **Research Score**: {research_score}\n"
     issue_body += f"  **Social Impact Score**: {social_impact_score}\n"
-    issue_body += f"- **GET**: {generated_text}\n"
     issue_body += f"  **DOI**: {doi}\n\n"
 
 def create_github_issue(title, body, access_token):
