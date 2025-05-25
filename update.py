@@ -44,7 +44,7 @@ def extract_scores(text):
 
 def get_pubmed_abstracts(rss_url):
     abstracts_with_urls = []
-    with open(rss_url, mode='r', encoding='utf-8-sig') as file:
+    with open(rss_url, mode='r') as file:
         csv_dict_reader = csv.DictReader(file)
         abstracts_with_urls = [row for row in csv_dict_reader]
 
