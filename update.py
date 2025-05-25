@@ -18,7 +18,7 @@ def extract_scores(text):
     response = client.chat.completions.create(
         model="deepseek-chat", 
         messages=[
-            {"role": "system", "content": "You are an expert and researcher. You are skilled at selecting interesting/novelty research."},
+            {"role": "system", "content": "You are a cynical chemistry researcher and research criticizer. You have great knowledge in Chemistry. You expertise in judging papers in a critical way, and you enjoy doing it regularly."},
             {"role": "user", "content": f"Given the text '{text}', evaluate this article with two scores:\n"
                                         "1. Research Score (0-100): Based on research innovation, methodological rigor, and data reliability.\n"
                                         "2. Social Impact Score (0-100): Based on public attention, policy relevance, and societal impact.\n"
