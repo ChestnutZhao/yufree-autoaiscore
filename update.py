@@ -7,7 +7,7 @@ import openai
 import csv
 
 # Test url
-rss_url = 'joc.csv'
+rss_url = 'tetlet.csv'
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
