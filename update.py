@@ -79,9 +79,10 @@ pubmed_abstracts = get_pubmed_abstracts(rss_url)
 new_articles_data = []
 
 for abstract_data in pubmed_abstracts:
-    title = abstract_data['title']
-    research_score, social_impact_score = extract_scores(abstract_data["abstract"])
-    doi = abstract_data['doi']
+    print(abstract_data)
+    title = abstract_data[title]
+    research_score, social_impact_score = extract_scores(abstract_data[abstract])
+    doi = abstract_data[doi]
 
     new_articles_data.append({
         "title": title,
