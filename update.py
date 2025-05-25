@@ -44,7 +44,7 @@ def extract_scores(text):
 
 def get_pubmed_abstracts(rss_url):
     abstracts_with_urls = []
-    with open(rss_url, mode='r') as file:
+    with open(rss_url, mode='r', encoding='utf-8-sig') as file:
         csv_dict_reader = csv.DictReader(file)
         abstracts_with_urls = [row for row in csv_dict_reader]
 
@@ -79,10 +79,9 @@ pubmed_abstracts = get_pubmed_abstracts(rss_url)
 new_articles_data = []
 
 for abstract_data in pubmed_abstracts:
-    print(abstract_data)
-    title = abstract_data[title]
-    research_score, social_impact_score = extract_scores(abstract_data[abstract])
-    doi = abstract_data[doi]
+    title = abstract_data['title']
+    research_score, social_impact_score = extract_scores(abstract_data['abstract'])
+    doi = abstract_data['doi']
 
     new_articles_data.append({
         "title": title,
