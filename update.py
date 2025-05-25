@@ -4,9 +4,10 @@ import json
 import requests
 import os
 import openai
+import csv
 
-# Example PubMed RSS feed URL
-rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1rUyv9-0xUixl8iP0hZRiJDvvzoO2ncrWKy4nWspV6YYVdU1FG/?limit=15&utm_campaign=pubmed-2&fc=20250205104849'
+# Test url
+rss_url = 'jacs.csv'
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
@@ -43,25 +44,31 @@ def extract_scores(text):
 
 def get_pubmed_abstracts(rss_url):
     abstracts_with_urls = []
+    with open(rss_url, mode='r', encoding='utf-8-sig') as file:
+        csv_dict_reader = csv.DictReader(file)
+        abstracts_with_urls = [row for row in csv_dict_reader]
+
+
 
     # Parse the PubMed RSS feed
-    feed = feedparser.parse(rss_url)
+    # feed = feedparser.parse(rss_url) blocked for testing
+    
 
     # Calculate the date one week ago
-    one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=1)
+    # one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=1)
 
     # Iterate over entries in the PubMed RSS feed and extract abstracts and URLs
-    for entry in feed.entries:
+    # for entry in feed.entries:
         # Get the publication date of the entry
-        published_date = datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %z')
+        # published_date = datetime.strptime(entry.published, '%a, %d %b %Y %H:%M:%S %z')
 
         # If the publication date is within one week, extract the abstract and URL
-        if published_date >= one_week_ago:
+        # if published_date >= one_week_ago:
             # Get the abstract and DOI of the entry
-            title = entry.title
-            abstract = entry.content[0].value
-            doi = entry.dc_identifier
-            abstracts_with_urls.append({"title": title, "abstract": abstract, "doi": doi})
+            # title = entry.title
+            # abstract = entry.content[0].value
+            # doi = entry.dc_identifier
+            #abstracts_with_urls.append({"title": title, "abstract": abstract, "doi": doi})
 
     return abstracts_with_urls
 
